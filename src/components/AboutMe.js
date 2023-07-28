@@ -12,7 +12,7 @@ const AboutMe = ( {reference, isvisible} ) =>
         <ContentDiv>
             <ImgContainer><Portrait src={portrait}/></ImgContainer>
             <NameDiv><h3>Marc-Antoine Tremblay</h3></NameDiv>
-            <div><h4>Full-stack web developper</h4></div>
+            <RoleName><h4>Full-stack web developper</h4></RoleName>
             <LocationDiv><LocationIcon /><h4>Montreal, Quebec</h4></LocationDiv>
             <IconsDiv><a rel="noreferrer" target="_blank" href="https://github.com/MarccAntoine"><GithubIcon /></a><a rel="noreferrer" target="_blank" href="https://www.linkedin.com/in/marc-antoine-tremblay/"><LinkedinIcon /></a></IconsDiv>
         </ContentDiv>
@@ -43,6 +43,11 @@ const Container = styled.div`
     opacity: ${props => props.isvisible === "true" ?  "100%" : "40%"};
 `
 
+const RoleName = styled.div`
+    text-align: center;
+    width: 100%;
+`
+
 const ContentDiv = styled.div`
     display: flex;
     align-items: center;
@@ -71,6 +76,8 @@ const Portrait = styled.img`
 
 const NameDiv = styled.div`
     margin: 30px 0px;
+    width: 100%;
+    text-align: center;
 `
 
 const IconsDiv = styled.div`

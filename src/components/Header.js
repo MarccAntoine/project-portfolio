@@ -241,7 +241,7 @@ const ModeButton = styled.button`
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    height: 40px;
+    height: 45px;
     aspect-ratio: 1;
     border: 1px solid black;
     position: relative;
