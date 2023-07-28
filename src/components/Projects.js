@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
 
-const Projects = () =>
+const Projects = ( {reference, isvisible} ) =>
 {
     const [projectsIndex, setProjectsIndex] = useState(0);
 
@@ -22,7 +22,7 @@ const Projects = () =>
     }
 
     return (
-    <Container id="projects">
+    <Container ref={reference} isvisible={isvisible.toString()} id="projects">
         <ProjectsDiv>
             <div><ProjectsTitle>Projects</ProjectsTitle></div>
             <ProjectDiv key={projects[projectsIndex].id}>
@@ -38,11 +38,27 @@ const Projects = () =>
 
 const Container = styled.div`
     margin-left: 30%;
-    margin-top: 70px;
-    padding-top: 100px;
+    margin-top: 130px;
+    padding-top: 40px;
     margin-left: 33%;
     width: 65%;
     position: relative;
+
+    transition: all ease-out 0.25s;
+
+    opacity: ${props => props.isvisible === "true" ?  "100%" : "40%"};
+
+    @media only screen and (max-width: 800px) {
+        padding-top: 200px;
+        margin: 10px 35px 0px 35px;
+        width: 90%;
+
+        @media only screen and (max-width: 800px) {
+        padding-top: 170px;
+        margin: 10px 18px 0px 18px;
+        width: 90%;
+    }
+    }
 `
 
 const ProjectsDiv = styled.div`
@@ -56,16 +72,31 @@ const ProjectsDiv = styled.div`
     align-items: center;
     flex-direction: column;
     position: relative;
+
+    @media only screen and (max-width: 800px) {
+        padding: 30px 20px;
+        margin: 0 auto;
+    }
 `
 
 const ProjectsTitle = styled.h2`
     font-size: 45px;
     color: white;
+
+    @media only screen and (max-width: 600px) {
+        font-size: 30px;
+    }
 `
 
 const ProjectName = styled.h3`
     margin: 40px 0px 20px 0px;
     color: white;
+
+    @media only screen and (max-width: 600px) {
+        font-size: 20px;
+        margin: 20px 0px 10px 0px;
+    }
+
 `
 
 const ProjectDesc = styled.p`
@@ -73,6 +104,11 @@ const ProjectDesc = styled.p`
     margin: 0 auto;
     padding-bottom: 20px;
     color: white;
+
+    @media only screen and (max-width: 600px) {
+        font-size: 12px;
+        padding-bottom: 10px;
+    }
 `
 
 const ProjectImageDiv = styled.div`
@@ -100,6 +136,10 @@ const ArrowButtonNext = styled.button`
         right: calc(36px - 5vw);
     }
 
+    @media only screen and (max-width: 600px) {
+        right: calc(0px - 5vw);
+    }
+
     &:hover {
         cursor: pointer;
     }
@@ -120,6 +160,10 @@ const ArrowButtonPrece = styled.button`
 
     @media only screen and (min-width: 1200px) {
         left: calc(36px - 5vw);
+    }
+
+    @media only screen and (max-width: 600px) {
+        left: calc(0px - 5vw);
     }
 
     &:hover {

@@ -3,7 +3,7 @@ import {BiMailSend} from'react-icons/bi'
 
 import styled from 'styled-components'
 
-const ContactMe = () =>
+const ContactMe = ( {reference, isvisible} ) =>
 {
 
     const copyEmail = () =>
@@ -22,7 +22,7 @@ const ContactMe = () =>
 
     return (
     <>
-        <Container id='contact'>
+        <Container ref={reference} isvisible={isvisible.toString()} id='contact'>
             <SectionDiv>
                 <SectionTitle><Title>Contact Me</Title><CopyButton onClick={copyEmail}><MailIcon /></CopyButton></SectionTitle>
                 <div><p>Fill the form to send me directly an email or click the email icon to copy my email in your clipboard.</p></div>
@@ -54,11 +54,27 @@ const ContactMe = () =>
 
 const Container = styled.div`
     margin-left: 30%;
-    margin-top: 130px;
+    margin-top: 230px;
     margin-bottom: 50px;
-    padding-top: 100px;
     width: 70%;
     position: relative;
+
+    transition: all ease-out 0.25s;
+
+    @media only screen and (max-width: 800px) {
+        margin: 180px 35px 0px 35px;
+        width: 90%;
+        margin-bottom: 0px;
+    }
+
+    @media only screen and (max-width: 800px) {
+        padding-top: 170px;
+        margin: 10px 18px 0px 18px;
+        width: 90%;
+        margin-bottom: 0px;
+    }
+
+    opacity: ${props => props.isvisible === "true" ?  "100%" : "40%"};
 `
 
 const SectionDiv = styled.div`
@@ -67,6 +83,11 @@ const SectionDiv = styled.div`
     flex-direction: column;
     align-items: left;
     width: 95%;
+
+    @media only screen and (max-width: 800px) {
+        padding: 30px;
+        margin: 0 auto;
+    }
 `
 
 const SectionTitle = styled.div`
@@ -78,6 +99,10 @@ const SectionTitle = styled.div`
 
 const Title = styled.h2`
     font-size: 40px;
+
+    @media only screen and (max-width: 800px) {
+        font-size: 30px;
+    }
 `
 
 const CopyButton = styled.button`
@@ -120,6 +145,12 @@ const StyledInput = styled.input`
         border: none;
         outline: none;
     }
+
+    @media only screen and (max-width: 800px) {
+        font-size: 12px;
+        top: 15px;
+        width: 95%;
+    }
 `
 
 const NameDiv = styled.div`
@@ -135,6 +166,10 @@ const NameDiv = styled.div`
         outline: var(--main-blue);
         border: 2px solid var(--main-blue);
     }
+
+    @media only screen and (max-width: 800px) {
+        height: 47px;
+    }
 `
 
 const FormLabel = styled.label`
@@ -145,6 +180,10 @@ const FormLabel = styled.label`
     font-family: var(--second-font);
     font-weight: 900;
     color: var(--contrast-color);
+
+    @media only screen and (max-width: 800px) {
+        font-size: 15px;
+    }
 `
 
 const MessageInput = styled.div`
@@ -176,6 +215,12 @@ const StyledTextArea = styled.textarea`
     &:focus {
         border: none;
         outline: none;
+    }
+
+    @media only screen and (max-width: 800px) {
+        font-size: 12px;
+        top: 15px;
+        width: 95%;
     }
 `
 
@@ -226,6 +271,13 @@ const Notif = styled.div`
     transform: translate(-50%, 0%);
 
     transition: all ease 0.3s;
+
+    @media only screen and (max-width: 800px) {
+        width: 125px;
+        height: 50px;
+        font-size: 12px;
+        padding: 12px;
+    }
 `
 
 export default ContactMe;

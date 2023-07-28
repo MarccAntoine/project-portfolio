@@ -80,10 +80,15 @@ export default createGlobalStyle`
     }
     body {
         background-color: var(--background-color);
+        overflow: ${props => props.openedMenu ? ("hidden") : ("visible")};
     }
     p {
         font-family: var(--main-font);
         font-size: 20px;
         color: var(--secondary-contrast);
+    }
+
+    #root {
+        width: 100vw;
     }
 `;

@@ -4,10 +4,11 @@ import  styled  from "styled-components";
 import {FaGithubSquare, FaLinkedin} from 'react-icons/fa'
 import { FaMapPin } from "react-icons/fa";
 
-const AboutMe = () =>
+const AboutMe = ( {reference, isvisible} ) =>
 {
+
     return (
-    <Container id="myself">
+    <Container ref={reference} id="myself" isvisible={isvisible.toString()}>
         <ContentDiv>
             <ImgContainer><Portrait src={portrait}/></ImgContainer>
             <NameDiv><h3>Marc-Antoine Tremblay</h3></NameDiv>
@@ -25,6 +26,21 @@ const Container = styled.div`
     margin-right: 5%;
     width: 70%;
     position: relative;
+    transition: all ease-out 0.25s;
+
+    @media only screen and (max-width: 800px) {
+        margin: 0px 15px 0px 15px;
+        width: 90%;
+        padding-top: 360px;
+    }
+
+    @media only screen and (max-width: 500px) {
+        margin: 0px 15px 0px 15px;
+        width: 90%;
+        padding-top: 260px;
+    }
+
+    opacity: ${props => props.isvisible === "true" ?  "100%" : "40%"};
 `
 
 const ContentDiv = styled.div`
@@ -39,6 +55,11 @@ const ImgContainer = styled.div`
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0px 0px 5px -1px #f2f2f2;
+
+    @media only screen and (max-width: 800px) {
+        width: 220px;
+        height: 220px;
+    }
 `
 
 const Portrait = styled.img`
@@ -54,6 +75,11 @@ const NameDiv = styled.div`
 
 const IconsDiv = styled.div`
     margin: 30px 0px;
+    height: fit-content;
+
+    @media only screen and (max-width: 800px) {
+        margin: 20px;
+    }
 `
 
 const GithubIcon = styled(FaGithubSquare)`
@@ -65,6 +91,11 @@ const GithubIcon = styled(FaGithubSquare)`
     &:hover {
         color: var(--second-green);
     }
+
+    @media only screen and (max-width: 800px) {
+        width: auto;
+        height: 30px;
+    }
 `
 
 const LinkedinIcon = styled(FaLinkedin)`
@@ -75,6 +106,11 @@ const LinkedinIcon = styled(FaLinkedin)`
 
     &:hover {
         color: var(--second-green);
+    }
+
+    @media only screen and (max-width: 800px) {
+        width: auto;
+        height: 30px;
     }
 `
 

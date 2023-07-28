@@ -3,10 +3,10 @@ import { DiJavascript } from 'react-icons/di'
 
 import styled from 'styled-components'
 
-const Experience = () =>
+const Experience = (  {reference, isvisible} ) =>
 {
     return (
-    <Container id='skills'>
+    <Container ref={reference} isvisible={isvisible.toString()} id='skills'>
         <Content>
             <Introduction><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></Introduction>
             <div>
@@ -50,6 +50,22 @@ const Container = styled.div`
     margin-right: 0px;
     width: 70%;
     position: relative;
+
+    transition: all ease-out 0.25s;
+
+    @media only screen and (max-width: 800px) {
+        padding-top: 200px;
+        margin: 10px 35px 0px 35px;
+        width: 90%;
+    }
+
+    @media only screen and (max-width: 500px) {
+        padding-top: 200px;
+        margin: 10px 18px 0px 18px;
+        width: 90%;
+    }
+
+    opacity: ${props => props.isvisible === "true" ?  "100%" : "40%"};
 `
 
 const Content = styled.div`
@@ -58,6 +74,11 @@ const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    @media only screen and (max-width: 800px) {
+        padding: 0px;
+        margin: 0 auto;
+    }
 `
 
 const Introduction = styled.div`
@@ -77,21 +98,32 @@ const LanguagesDiv = styled.div`
 const IconsDiv = styled.div`
     margin: 5px 15px;
     transition: all ease-in-out 0.5s;
+    height: 140px;
+    width: 100px;
 
     &:hover {
         transform: scale(1.1);
     }
+
+    @media only screen and (max-width: 800px) {
+        width: 60px;
+        height: 80px;
+    }
 `
 
 const IconsName = styled.div`
-    visibility: hidden;
+    display: none;
     height: 25px;
     font-family: var(--main-font);
     font-size: 18px;
     color: var(--secondary-contrast);
 
     ${IconsDiv}:hover & {
-        visibility: visible;
+        display: inline;
+    }
+
+    @media only screen and (max-width: 800px) {
+        font-size: 12px;
     }
 `
 
@@ -103,6 +135,11 @@ const IconHtml = styled(FaHtml5)`
     ${IconsDiv}:hover & {
         color: var(--second-green);
     }
+
+    @media only screen and (max-width: 800px) {
+        width: auto;
+        height: 50px;
+    }
 `
 
 const IconCss = styled(FaCss3Alt)`
@@ -112,6 +149,11 @@ const IconCss = styled(FaCss3Alt)`
 
     ${IconsDiv}:hover & {
         color: var(--second-green);
+    }
+
+    @media only screen and (max-width: 800px) {
+        width: auto;
+        height: 50px;
     }
 `
 
@@ -123,6 +165,11 @@ const IconJava = styled(DiJavascript)`
     ${IconsDiv}:hover & {
         color: var(--second-green);
     }
+
+    @media only screen and (max-width: 800px) {
+        width: auto;
+        height: 50px;
+    }
 `
 
 const IconReact = styled(FaReact)`
@@ -132,6 +179,11 @@ const IconReact = styled(FaReact)`
 
     ${IconsDiv}:hover & {
         color: var(--second-green);
+    }
+
+    @media only screen and (max-width: 800px) {
+        width: auto;
+        height: 50px;
     }
 `
 
@@ -143,13 +195,22 @@ const IconPy = styled(FaPython)`
     ${IconsDiv}:hover & {
         color: var(--second-green);
     }
+
+    @media only screen and (max-width: 800px) {
+        width: auto;
+        height: 50px;
+    }
 `
 
 const SubjectsContainer = styled.div`
     position: relative;
-    margin: 80px 0px;
     width: 100%;
-    aspect-ratio: 0.9;
+    aspect-ratio: 0.96;
+
+    @media only screen and (max-width: 800px) {
+        width: 95%;
+        margin: 0 auto;
+    }
 `
 
 const SubjectDiv1 = styled.div`
@@ -183,7 +244,7 @@ const SubjectDiv3 = styled.div`
     border-radius: 50%;
     background-color: var(--main-blue);
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 0%;
     display: flex;
     flex-direction: column;
@@ -204,6 +265,10 @@ const SubjectTitle = styled.h4`
     @media only screen and (min-width: 1200px) {
         font-size: calc(27px + 0.2vw);
     }
+
+    @media only screen and (max-width: 500px) {
+        font-size: calc(14px + 0.2vw);
+    }
 `
 
 const SubjectPara = styled.p`
@@ -218,6 +283,10 @@ const SubjectPara = styled.p`
 
     @media only screen and (min-width: 1200px) {
         font-size: calc(22px + 0.1vw);
+    }
+
+    @media only screen and (max-width: 500px) {
+        font-size: calc(8px + 0.1vw);
     }
 `
 

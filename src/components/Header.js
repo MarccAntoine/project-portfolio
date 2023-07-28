@@ -1,9 +1,36 @@
 import styled from "styled-components";
 
 import {MdDarkMode, MdLightMode} from 'react-icons/md'
+import {SlMenu} from 'react-icons/sl'
+import { useEffect, useState } from "react";
 
-const Header = ( {darkMode, setDarkMode} ) =>
+const Header = ( {darkMode, setDarkMode, openedMenu, setOpenedMenu} ) =>
 {
+    const [isMobile, setIsMobile] = useState(false);
+
+    const showMenu = () =>
+    {
+        setOpenedMenu(!openedMenu)
+    }
+
+    useEffect(() =>
+    {
+        const mediaQuery = window.matchMedia('(max-width: 800px)');
+
+        const handleMediaQueryChange = (event) => {
+            setIsMobile(event.matches);
+            setOpenedMenu(false)
+        };
+
+        mediaQuery.addListener(handleMediaQueryChange);
+    
+        handleMediaQueryChange(mediaQuery);
+    
+        return () => {
+            mediaQuery.removeListener(handleMediaQueryChange);
+        };
+    }, [])
+
     const toggleDarkMode = () =>
     {
         setDarkMode(!darkMode);
@@ -11,28 +38,96 @@ const Header = ( {darkMode, setDarkMode} ) =>
 
     const scrollSelect = (selectId) =>
     {
-        console.log(selectId);
         const element = document.querySelector(`#${selectId}`);
         element.scrollIntoView({behavior: "smooth", block: "start"});
+
+        if (openedMenu) {showMenu()}
     }
 
     return (
     <>
         <StyledHeader>
-        <div><h1>Marc-Antoine Tremblay</h1></div>
+        <NameDiv><Nameh1>Marc-Antoine Tremblay</Nameh1></NameDiv>
             <Navbar>
                 <SectionsTitles>
-                    <Line></Line>
+                    {isMobile? (<></>) : (<Line></Line>)}
                     <SectionDiv onClick={() => {scrollSelect("myself")}}><Ball></Ball><Sections>About Me</Sections></SectionDiv>
                     <SectionDiv onClick={() => {scrollSelect("skills")}}><Ball></Ball><Sections>Expertise</Sections></SectionDiv>
                     <SectionDiv onClick={() => {scrollSelect("projects")}}><Ball></Ball><Sections>Projects</Sections></SectionDiv>
                     <SectionDiv onClick={() => {scrollSelect("contact")}}><Ball></Ball><Sections>Contact Me</Sections></SectionDiv>
                 </SectionsTitles>
             </Navbar>
+            {isMobile ? (
+                <>
+                    <MenuButton onClick={showMenu}><MenuIcon /></MenuButton>
+                    <NavMenu openedmenu={openedMenu.toString()}>
+                        <SectionDiv onClick={() => {scrollSelect("myself")}}><Sections>About Me</Sections></SectionDiv>
+                        <SectionDiv onClick={() => {scrollSelect("skills")}}><Sections>Expertise</Sections></SectionDiv>
+                        <SectionDiv onClick={() => {scrollSelect("projects")}}><Sections>Projects</Sections></SectionDiv>
+                        <SectionDiv onClick={() => {scrollSelect("contact")}}><Sections>Contact Me</Sections></SectionDiv>
+                        {darkMode ? (<DarkDiv><DarkLabel>Light Mode</DarkLabel><ModeButton onClick={() => {toggleDarkMode()}}><Light /></ModeButton></DarkDiv>) : (<DarkDiv><DarkLabel>Dark Mode</DarkLabel><ModeButton onClick={() => {toggleDarkMode()}}><Dark /></ModeButton></DarkDiv>)}
+                    </NavMenu>
+                </>
+            ) : (<></>)}
         </StyledHeader>
-        {darkMode ? (<DarkDiv><DarkLabel>Light Mode</DarkLabel><ModeButton onClick={() => {toggleDarkMode()}}><Light /></ModeButton></DarkDiv>) : (<DarkDiv><DarkLabel>Dark Mode</DarkLabel><ModeButton onClick={() => {toggleDarkMode()}}><Dark /></ModeButton></DarkDiv>)}
+        {isMobile ? (<></>) : (<>{darkMode ? (<DarkDiv><DarkLabel>Light Mode</DarkLabel><ModeButton onClick={() => {toggleDarkMode()}}><Light /></ModeButton></DarkDiv>) : (<DarkDiv><DarkLabel>Dark Mode</DarkLabel><ModeButton onClick={() => {toggleDarkMode()}}><Dark /></ModeButton></DarkDiv>)}</>)}
     </>)
 }
+
+const NavMenu = styled.div`
+    display: ${props => props.openedmenu === "true" ?  "flex" : "none"};
+
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+    position: absolute;
+    top: 18vh;
+    left: 0;
+
+    height: 82vh;
+    width: 100vw;
+
+    z-index: 25;
+
+    background-color: var(--background-color);
+
+    &#root {
+        overflow: hidden;
+    }
+`
+
+const MenuIcon = styled(SlMenu)`
+    height: 50%;
+    width: auto;
+
+    color: var(--secondary-contrast);
+    margin-right: 30px;
+`
+
+const MenuButton = styled.button`
+    background-color: transparent;
+    border: none;
+    height: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }
+`
+
+const NameDiv = styled.div`
+    @media only screen and (max-width: 800px) {
+        height: fit-content;
+        width: 60%;
+        margin-left: 25px;
+    }
+`
+
+const Nameh1 = styled.h1`
+    @media only screen and (max-width: 500px) {
+        font-size: 30px;
+    }
+`
 
 const SectionDiv = styled.button`
     background-color: transparent;
@@ -58,6 +153,10 @@ const Navbar = styled.nav`
         opacity: 100%;
         filter: none;
     }
+
+    @media only screen and (max-width: 800px) {
+        display: none;
+    }
 `
 
 const StyledHeader = styled.header`
@@ -71,6 +170,17 @@ const StyledHeader = styled.header`
     flex-direction: column;
     justify-content: space-between;
     margin: 0;
+
+    @media only screen and (max-width: 800px) {
+        height: 19vh;
+        width: 100vw;
+        background-color: var(--background-color);
+        z-index: 50;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
 `
 
 const SectionsTitles = styled.div`
@@ -159,6 +269,11 @@ const DarkDiv = styled.div`
     top: 10px;
     right: 10px;
     z-index: 9;
+
+    @media only screen and (max-width: 800px) {
+        position: relative;
+        z-index: 51;
+    }
 `
 
 const DarkLabel = styled.label`
