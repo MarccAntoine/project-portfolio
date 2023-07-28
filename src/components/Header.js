@@ -243,17 +243,16 @@ const ModeButton = styled.button`
     border-radius: 50%;
     height: 40px;
     aspect-ratio: 1;
-    border: 1px solid black;
+    border: 1px solid var(--secondary-contrast);
     position: relative;
     z-index: 5;
 
     &:hover {
         cursor: pointer;
-        
     }
 
     @media only screen and (max-width: 500px) {
-        height: 45px;
+        height: 50px;
     }
 `
 
@@ -274,9 +273,10 @@ const DarkDiv = styled.div`
     top: 10px;
     right: 10px;
     z-index: 9;
+    width: fit-content;
 
     @media only screen and (max-width: 800px) {
-        position: relative;
+        position: static;
         z-index: 51;
     }
 `
@@ -298,6 +298,10 @@ const DarkLabel = styled.label`
 
     ${DarkDiv}:hover & {
         display: inline;
+    }
+
+    @media only screen and (max-width: 800px) {
+        visibility: hidden;
     }
 `
 
