@@ -83,6 +83,7 @@ const NameDiv = styled.div`
 const IconsDiv = styled.div`
     margin: 30px 0px;
     height: fit-content;
+    width: fit-content;
 
     @media only screen and (max-width: 800px) {
         margin: 20px;

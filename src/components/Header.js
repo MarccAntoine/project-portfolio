@@ -92,7 +92,9 @@ const NavMenu = styled.div`
 
     background-color: var(--background-color);
 
-    overflow: scroll;
+    @media only screen and (max-width: 500px) {
+        padding-bottom: 40px;
+    }
 `
 
 const MenuIcon = styled(SlMenu)`
@@ -239,7 +241,7 @@ const ModeButton = styled.button`
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    height: 45px;
+    height: 40px;
     aspect-ratio: 1;
     border: 1px solid black;
     position: relative;
@@ -247,6 +249,11 @@ const ModeButton = styled.button`
 
     &:hover {
         cursor: pointer;
+        
+    }
+
+    @media only screen and (max-width: 500px) {
+        height: 45px;
     }
 `
 
