@@ -13,7 +13,6 @@ function App() {
   const divsRef = [useRef(null), useRef(null), useRef(null), useRef(null)];
   const [visibleIndex, setVisibleIndex] = useState([0]);
   const [openedMenu, setOpenedMenu] = useState(false);
-  let scrollTimeout;
 
   const isElementInViewport = () =>
   {
@@ -31,6 +30,7 @@ function App() {
 
   useEffect(() =>
   {
+    let scrollTimeout;
     const checkElement = () => {
       if (scrollTimeout) {
         clearTimeout(scrollTimeout);
@@ -46,7 +46,7 @@ function App() {
     return () => {
       document.removeEventListener("scroll", checkElement)
     }
-  }, [visibleIndex])
+  }, [visibleIndex]) // eslint-disable-line
 
   return (
     <>

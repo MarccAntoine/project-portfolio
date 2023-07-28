@@ -15,21 +15,21 @@ const Header = ( {darkMode, setDarkMode, openedMenu, setOpenedMenu} ) =>
 
     useEffect(() =>
     {
-        const mediaQuery = window.matchMedia('(max-width: 800px)');
+        const windowSize = window.matchMedia('(max-width: 800px)');
 
         const handleMediaQueryChange = (event) => {
             setIsMobile(event.matches);
             setOpenedMenu(false)
         };
 
-        mediaQuery.addListener(handleMediaQueryChange);
+        windowSize.addListener(handleMediaQueryChange);
     
-        handleMediaQueryChange(mediaQuery);
+        handleMediaQueryChange(windowSize);
     
         return () => {
-            mediaQuery.removeListener(handleMediaQueryChange);
+            windowSize.removeListener(handleMediaQueryChange);
         };
-    }, [])
+    }, []) // eslint-disable-line
 
     const toggleDarkMode = () =>
     {
