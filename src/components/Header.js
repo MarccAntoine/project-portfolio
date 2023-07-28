@@ -92,9 +92,7 @@ const NavMenu = styled.div`
 
     background-color: var(--background-color);
 
-    &#root {
-        overflow: hidden;
-    }
+    overflow: scroll;
 `
 
 const MenuIcon = styled(SlMenu)`
