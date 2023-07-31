@@ -51,6 +51,13 @@ const Container = styled.div`
 
     opacity: ${props => props.isvisible === "true" ?  "100%" : "40%"};
 
+    @media only screen and (min-height: 1000px) {
+        margin-top: 200px;
+    }
+
+    @media only screen and (min-height: 1200px) {
+        margin-top: 250px;
+    }
 
     @media only screen and (max-width: 800px) {
         padding-top: 170px;
@@ -249,6 +256,9 @@ const ProjectDiv = styled.div`
         height: 800px;
     }
 
+    @media only screen and (min-height: 1000px) {
+        height: 950px;
+    }
 
     @media only screen and (max-width: 999px) {
         height: 700px;

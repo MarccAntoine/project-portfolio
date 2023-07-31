@@ -61,6 +61,14 @@ const Container = styled.div`
 
     transition: all ease-out 0.25s;
 
+    @media only screen and (min-height: 1000px) {
+        margin-top: 300px;
+    }
+
+    @media only screen and (min-height: 1200px) {
+        margin-top: 350px;
+    }
+
     @media only screen and (max-width: 800px) {
         margin: 180px 35px 0px 35px;
         width: 90%;

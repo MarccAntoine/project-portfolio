@@ -9,7 +9,7 @@ const Experience = (  {reference, isvisible} ) =>
     return (
     <Container ref={reference} isvisible={isvisible.toString()} id='skills'>
         <Content>
-            <Introduction><p>In 2019, I relocated to Montreal to pursue my studies in fashion marketing at LaSalle College. Upon completing my DEC, I embarked on a new journey in computer science by self-learning with Harvard's CS50 introduction to computer science and I enrolled in Concordia's web development bootcamp. Since then, I have acquired a range of new skills and developed a genuine passion for the tech industry. I am eager to kickstart my career and continue my pursuit of knowledge in this field.</p></Introduction>
+            <Introduction><p>In 2019, I relocated to Montreal to pursue my studies in fashion marketing at LaSalle College. Upon completing my DEC, I embarked on a new journey in computer science by self-learning with Harvard's CS50 introduction to computer science and I enrolled in Concordia's web development bootcamp. Since then, I have acquired a range of new skills and developed a passion for the tech industry. I am eager to kickstart my career and continue my pursuit of learning in this field.</p></Introduction>
             <div>
                 <h3>Programming languages and libraries</h3>
                 <LanguagesDiv>
@@ -57,6 +57,14 @@ const Container = styled.div`
     position: relative;
 
     transition: all ease-out 0.25s;
+
+    @media only screen and (min-height: 1000px) {
+        margin-top: 300px;
+    }
+
+    @media only screen and (min-height: 1200px) {
+        margin-top: 350px;
+    }
 
     @media only screen and (max-width: 800px) {
         padding-top: 200px;
@@ -331,6 +339,10 @@ const SubjectTitle = styled.h4`
         font-size: 29px;
     }
 
+    @media only screen and (min-width: 1800px) {
+        font-size: 31px;
+    }
+
     @media only screen and (max-width: 650px) {
         font-size: 15px;
     }
@@ -364,6 +376,10 @@ const SubjectPara = styled.p`
 
     @media only screen and (min-width: 1650px) {
         font-size: 21px;
+    }
+
+    @media only screen and (min-width: 1800px) {
+        font-size: 25px;
     }
 
     @media only screen and (max-width: 650px) {
