@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
 
+
 const Projects = ( {reference, isvisible} ) =>
 {
     const [projectsIndex, setProjectsIndex] = useState(0);
@@ -28,7 +29,9 @@ const Projects = ( {reference, isvisible} ) =>
             <ProjectDiv key={projects[projectsIndex].id}>
                 <ProjectName>{projects[projectsIndex].name}</ProjectName>
                 <ProjectDesc>{projects[projectsIndex].description}</ProjectDesc>
-                <ProjectImageDiv><img src={projects[projectsIndex].srcImg1} alt={projects[projectsIndex].name}/></ProjectImageDiv>
+                <ProjectImagesDiv>
+                    <ProjectImageBack><ProjectImageMax><ImageProject src={projects[projectsIndex].srcImg1} alt={projects[projectsIndex].name}/></ProjectImageMax></ProjectImageBack>
+                </ProjectImagesDiv>
                 <ArrowButtonNext onClick={nextProject}><NextArrow /></ArrowButtonNext>
                 <ArrowButtonPrece onClick={precedentProject}><PreceArrow /></ArrowButtonPrece>
             </ProjectDiv>
@@ -48,21 +51,16 @@ const Container = styled.div`
 
     opacity: ${props => props.isvisible === "true" ?  "100%" : "40%"};
 
-    @media only screen and (max-width: 800px) {
-        padding-top: 200px;
-        margin: 10px 35px 0px 35px;
-        width: 90%;
 
-        @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 800px) {
         padding-top: 170px;
         margin: 10px 18px 0px 18px;
         width: 90%;
     }
-    }
 `
 
 const ProjectsDiv = styled.div`
-    background-color: var(--second-blue);
+    background-color: transparent;
     width: 95%;
     padding: 50px 20px;
     border-radius: 55px;
@@ -81,7 +79,7 @@ const ProjectsDiv = styled.div`
 
 const ProjectsTitle = styled.h2`
     font-size: 45px;
-    color: white;
+    color: var(--contrast-color);
 
     @media only screen and (max-width: 600px) {
         font-size: 30px;
@@ -90,7 +88,7 @@ const ProjectsTitle = styled.h2`
 
 const ProjectName = styled.h3`
     margin: 40px 0px 20px 0px;
-    color: white;
+    color: var(--secondary-contrast);
 
     @media only screen and (max-width: 600px) {
         font-size: 20px;
@@ -102,8 +100,8 @@ const ProjectName = styled.h3`
 const ProjectDesc = styled.p`
     width: 80%;
     margin: 0 auto;
-    padding-bottom: 20px;
-    color: white;
+    padding-bottom: 10px;
+    color: var(--secondary-contrast);
 
     @media only screen and (max-width: 600px) {
         font-size: 12px;
@@ -111,12 +109,43 @@ const ProjectDesc = styled.p`
     }
 `
 
-const ProjectImageDiv = styled.div`
+const ProjectImagesDiv = styled.div`
+    background-color: transparent;
     width: 80%;
     aspect-ratio: 1.5;
-    background-color: white;
     margin: 0 auto;
     border-radius: 15px;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+`
+
+const ProjectImageBack = styled.div`
+    padding: 1%;
+    border-radius: 20px;
+    background-color: var(--second-blue);
+
+    height: 95%;
+    aspect-ratio: 1.3;
+
+    z-index: 5;
+`
+
+const ProjectImageMax = styled.div`
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    height: 100%;
+    width: 100%;
+`
+
+const ImageProject = styled.img`
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+    height: 100%;
 `
 
 const ArrowButtonNext = styled.button`
@@ -124,20 +153,24 @@ const ArrowButtonNext = styled.button`
     background-color: transparent;
     border: none;
     position: absolute;
-    top: 50%;
-    right: calc(18px - 5vw);
+    top: 8%;
+    right: calc(38px - 5vw);
     transform: translate(0%, -50%);
 
     @media only screen and (min-width: 1000px) {
-        right: calc(25px - 5vw);
+        right: calc(45px - 5vw);
     }
 
     @media only screen and (min-width: 1200px) {
-        right: calc(36px - 5vw);
+        right: calc(56px - 5vw);
     }
 
     @media only screen and (max-width: 600px) {
-        right: calc(0px - 5vw);
+        right: calc(20px - 5vw);
+    }
+
+    @media only screen and (max-width: 500px) {
+        right: calc(12px - 5vw);
     }
 
     &:hover {
@@ -150,20 +183,24 @@ const ArrowButtonPrece = styled.button`
     background-color: transparent;
     border: none;
     position: absolute;
-    top: 50%;
-    left: calc(18px - 5vw);
+    top: 8%;
+    left: calc(38px - 5vw);
     transform: translate(0%, -50%);
 
     @media only screen and (min-width: 1000px) {
-        left: calc(25px - 5vw);
+        left: calc(45px - 5vw);
     }
 
     @media only screen and (min-width: 1200px) {
-        left: calc(36px - 5vw);
+        left: calc(56px - 5vw);
     }
 
     @media only screen and (max-width: 600px) {
-        left: calc(0px - 5vw);
+        left: calc(20px - 5vw);
+    }
+
+    @media only screen and (max-width: 500px) {
+        left: calc(12px - 5vw);
     }
 
     &:hover {
@@ -172,33 +209,62 @@ const ArrowButtonPrece = styled.button`
 `
 
 const NextArrow = styled(IoIosArrowForward)`
-    width: calc(30px + 5vw);
+    width: calc(8px + 4vw);
     height: auto;
-    color: white;
-    opacity: 70%;
+    color: var(--secondary-contrast);
+    opacity: 50%;
     transition: all ease 0.3s;
 
     ${ArrowButtonNext}:hover & {
-        opacity: 100%;
+        opacity: 75%;
         transform: scale(1.2);
     }
 `
 
 const PreceArrow = styled(IoIosArrowBack)`
-    width: calc(30px + 5vw);
+    width: calc(8px + 4vw);
     height: auto;
-    color: white;
-    opacity: 70%;
+    color: var(--secondary-contrast);
+    opacity: 50%;
     transition: all ease 0.3s;
 
     ${ArrowButtonPrece}:hover & {
-        opacity: 100%;
+        opacity: 75%;
         transform: scale(1.2);
     }
 `
 
 const ProjectDiv = styled.div`
     position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media only screen and (min-width: 1000px) {
+        height: 750px;
+    }
+
+    @media only screen and (min-width: 1200px) {
+        height: 800px;
+    }
+
+
+    @media only screen and (max-width: 999px) {
+        height: 700px;
+    }
+
+    @media only screen and (max-width: 800px) {
+        height: 700px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        height: 460px;
+    }
+
+    @media only screen and (max-width: 450px) {
+        height: 400px;
+    }
 `
 
 export default Projects;

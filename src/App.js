@@ -21,7 +21,7 @@ function App() {
       if (ref.current)
       {
         const position = ref.current.getBoundingClientRect();
-        const isVisible = (position.top < (window.innerHeight - 100) && position.bottom >= 100);
+        const isVisible = (position.top < (window.innerHeight - 150) && position.bottom >= 150);
         if (isVisible && !visibleIndex.includes(index)) {setVisibleIndex(prevVisibleIndex => [...prevVisibleIndex, index])}
         if (!isVisible && visibleIndex.includes(index)) {setVisibleIndex(prevVisibleIndex => prevVisibleIndex.filter(itemIndex => itemIndex !== index))}
       }

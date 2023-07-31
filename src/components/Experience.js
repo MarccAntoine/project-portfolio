@@ -1,14 +1,15 @@
-import { FaHtml5, FaCss3Alt, FaReact, FaPython } from 'react-icons/fa'
+import { FaHtml5, FaCss3Alt, FaReact, FaPython, FaNodeJs } from 'react-icons/fa'
 import { DiJavascript } from 'react-icons/di'
 
 import styled from 'styled-components'
+import { expertise } from '../content/expertiseData'
 
 const Experience = (  {reference, isvisible} ) =>
 {
     return (
     <Container ref={reference} isvisible={isvisible.toString()} id='skills'>
         <Content>
-            <Introduction><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></Introduction>
+            <Introduction><p>In 2019, I relocated to Montreal to pursue my studies in fashion marketing at LaSalle College. Upon completing my DEC, I embarked on a new journey in computer science by self-learning with Harvard's CS50 introduction to computer science and I enrolled in Concordia's web development bootcamp. Since then, I have acquired a range of new skills and developed a genuine passion for the tech industry. I am eager to kickstart my career and continue my pursuit of knowledge in this field.</p></Introduction>
             <div>
                 <h3>Programming languages and libraries</h3>
                 <LanguagesDiv>
@@ -29,15 +30,19 @@ const Experience = (  {reference, isvisible} ) =>
                         <IconsName>React</IconsName>
                     </IconsDiv>
                     <IconsDiv>
+                        <div><IconNode /></div>
+                        <IconsName>Node.js</IconsName>
+                    </IconsDiv>
+                    <IconsDiv>
                         <div><IconPy /></div>
                         <IconsName>Python</IconsName>
                     </IconsDiv>
                 </LanguagesDiv>
             </div>
             <SubjectsContainer>
-                <SubjectDiv1><SubjectTitle>Web Development</SubjectTitle><SubjectPara>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</SubjectPara></SubjectDiv1>
-                <SubjectDiv2><SubjectTitle>Graphism</SubjectTitle><SubjectPara>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</SubjectPara></SubjectDiv2>
-                <SubjectDiv3><SubjectTitle>UI / UX</SubjectTitle><SubjectPara>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</SubjectPara></SubjectDiv3>
+                <SubjectDiv1><SubjectTitle>{expertise[0].name}</SubjectTitle><SubjectPara>{expertise[0].description}</SubjectPara></SubjectDiv1>
+                <SubjectDiv2><SubjectTitle>{expertise[1].name}</SubjectTitle><SubjectPara>{expertise[1].description}</SubjectPara></SubjectDiv2>
+                <SubjectDiv3><SubjectTitle>{expertise[2].name}</SubjectTitle><SubjectPara>{expertise[2].description}</SubjectPara></SubjectDiv3>
             </SubjectsContainer>
         </Content>
     </Container>)
@@ -45,8 +50,8 @@ const Experience = (  {reference, isvisible} ) =>
 
 const Container = styled.div`
     margin-left: 30%;
-    margin-top: 130px;
-    padding-top: 100px;
+    margin-top: 180px;
+    padding-top: 50px;
     margin-right: 0px;
     width: 70%;
     position: relative;
@@ -142,6 +147,22 @@ const IconHtml = styled(FaHtml5)`
     }
 `
 
+const IconNode = styled(FaNodeJs)`
+width: auto;
+height: 95px;
+color: var(--secondary-contrast);
+margin-bottom: 3px;
+
+${IconsDiv}:hover & {
+    color: var(--second-green);
+}
+
+@media only screen and (max-width: 800px) {
+    width: auto;
+    height: 50px;
+}
+`
+
 const IconCss = styled(FaCss3Alt)`
     width: auto;
     height: 100px;
@@ -205,7 +226,7 @@ const IconPy = styled(FaPython)`
 const SubjectsContainer = styled.div`
     position: relative;
     width: 100%;
-    aspect-ratio: 0.96;
+    aspect-ratio: 0.95;
 
     @media only screen and (max-width: 800px) {
         width: 95%;
@@ -223,7 +244,19 @@ const SubjectDiv1 = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     aspect-ratio: 1;
+
+    transition: all ease 0.3s;
+
+    @media only screen and (max-width: 500px) {
+        width: 56%;
+        left: 7%;
+    }
+
+    &:hover {
+        transform: scale(1.09);
+    }
 `
 
 const SubjectDiv2 = styled.div`
@@ -236,7 +269,21 @@ const SubjectDiv2 = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     aspect-ratio: 1;
+
+    transition: all ease 0.3s;
+
+
+    @media only screen and (max-width: 500px) {
+        width: 56%;
+        top: 40%;
+        left: 49%;
+    }
+
+    &:hover {
+        transform: scale(1.09);
+    }
 `
 
 const SubjectDiv3 = styled.div`
@@ -249,44 +296,86 @@ const SubjectDiv3 = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     aspect-ratio: 1;
+
+    transition: all ease 0.3s;
+
+
+    @media only screen and (max-width: 500px) {
+        width: 56%;
+        top: 55%;
+        left: -6%
+    }
+
+    &:hover {
+        transform: scale(1.09);
+    }
 `
 
 const SubjectTitle = styled.h4`
     color: white;
-    margin: 15% 0px;
+    margin: 0px 0px 7% 0px;
     width: 60%;
-    font-size: calc(20px + 0.2vw);
+    font-size: 19px;
 
-    @media only screen and (min-width: 1000px) {
-        font-size: calc(25px + 0.2vw);
+    @media only screen and (min-width: 1050px) {
+        font-size: 23px;
     }
 
     @media only screen and (min-width: 1200px) {
-        font-size: calc(27px + 0.2vw);
+        font-size: 26px;
     }
 
-    @media only screen and (max-width: 500px) {
-        font-size: calc(14px + 0.2vw);
+    @media only screen and (min-width: 1650px) {
+        font-size: 29px;
+    }
+
+    @media only screen and (max-width: 650px) {
+        font-size: 15px;
+    }
+
+    @media only screen and (max-width: 460px) {
+        font-size: 14px;
+    }
+
+    @media only screen and (max-width: 400px) {
+        font-size: 13px;
     }
 `
 
 const SubjectPara = styled.p`
     color: white;
-    font-size: calc(15px + 0.1vw);
+    font-size: 14px;
     max-width: 75%;
     max-height: 60%;
 
-    @media only screen and (min-width: 1000px) {
-        font-size: calc(18px + 0.1vw);
+    @media only screen and (min-width: 800px) {
+        font-size: 11px;
+    }
+
+    @media only screen and (min-width: 1075px) {
+        font-size: 16px;
     }
 
     @media only screen and (min-width: 1200px) {
-        font-size: calc(22px + 0.1vw);
+        font-size: 18px;
     }
 
-    @media only screen and (max-width: 500px) {
-        font-size: calc(8px + 0.1vw);
+    @media only screen and (min-width: 1650px) {
+        font-size: 21px;
+    }
+
+    @media only screen and (max-width: 650px) {
+        font-size: 12px;
+    }
+
+    @media only screen and (max-width: 460px) {
+        font-size: 9px;
+    }
+
+    @media only screen and (max-width: 400px) {
+        font-size: 8px;
     }
 `
 

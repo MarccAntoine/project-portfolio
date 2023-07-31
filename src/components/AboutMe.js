@@ -40,6 +40,12 @@ const Container = styled.div`
         padding-top: 260px;
     }
 
+    @media only screen and (max-width: 500px) {
+        margin: 0px 15px 0px 15px;
+        width: 90%;
+        padding-top: 200px;
+    }
+
     opacity: ${props => props.isvisible === "true" ?  "100%" : "40%"};
 `
 

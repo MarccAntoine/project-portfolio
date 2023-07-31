@@ -1,0 +1,5 @@
+export const expertise = [
+    {id: "WebDev", name: "Web Development", description: "I possess programming skills in several languages, as showcased above. My focus lies in developping effective and well-structured solutions. My enthusiasm for learning drives me to constantly expand my capabilities and develop new programming skills."},
+    {id: "UI", name: "UI and UX", description: "In my approach to programming, creating a pleasing and user-friendly experience is a top priority. I enjoy working on both sides the user experience, wheter it involves bringing designs to life on the web or creating the design and functionalities from scratch."},
+    {id: "AI", name: "Machine Learning and AI", description: "While I am just beggining in this area, I am eager to learn new skills and start using them to develop new programs. Staying updated on the lastest developments in the tech field is something I find interesting, and I always like to give myself new challenges."}
+]

@@ -25,7 +25,7 @@ const ContactMe = ( {reference, isvisible} ) =>
         <Container ref={reference} isvisible={isvisible.toString()} id='contact'>
             <SectionDiv>
                 <SectionTitle><Title>Contact Me</Title><CopyButton onClick={copyEmail}><MailIcon /></CopyButton></SectionTitle>
-                <div><p>Fill the form to send me directly an email or click the email icon to copy my email in your clipboard.</p></div>
+                <div><Intructions>Fill the form to send me directly an email or click the email icon to copy my email in your clipboard.</Intructions></div>
                 <div>
                     <FormDiv>
                         <NameDiv>
@@ -105,6 +105,12 @@ const Title = styled.h2`
     }
 `
 
+const Intructions = styled.p`
+        @media only screen and (max-width: 800px) {
+        font-size: 15px;
+    }
+`
+
 const CopyButton = styled.button`
     background: none;
     border: none;
@@ -149,7 +155,8 @@ const StyledInput = styled.input`
     @media only screen and (max-width: 800px) {
         font-size: 12px;
         top: 15px;
-        width: 95%;
+        width: 96%;
+        left: -3px;
     }
 `
 
@@ -168,7 +175,7 @@ const NameDiv = styled.div`
     }
 
     @media only screen and (max-width: 800px) {
-        height: 47px;
+        height: 42px;
     }
 `
 
@@ -220,7 +227,8 @@ const StyledTextArea = styled.textarea`
     @media only screen and (max-width: 800px) {
         font-size: 12px;
         top: 15px;
-        width: 95%;
+        width: 96%;
+        left: -3px;
     }
 `
 
