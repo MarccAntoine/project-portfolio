@@ -30,17 +30,17 @@ const ContactMe = ( {reference, isvisible} ) =>
                     <FormDiv>
                         <NameDiv>
                             <FormLabel>Your name
-                                <StyledInput />
+                                <StyledInput type='text' id="fname"/>
                             </FormLabel>
                         </NameDiv>
                         <NameDiv>
                             <FormLabel>Your email
-                                <StyledInput />
+                                <StyledInput type='email' id="email"/>
                             </FormLabel>
                         </NameDiv>
                         <MessageInput>
                             <FormLabel>Message
-                                <StyledTextArea placeholder='This functionality requires server-side implementation that I will learn in the next week, the send button will be disabled until I am able to use Node.js and NodeMailer' rows="10"/>
+                                <StyledTextArea type="text" id="message" placeholder='This functionality requires server-side implementation that I will learn in the next week, the send button will be disabled until I am able to use Node.js and NodeMailer' rows="10"/>
                             </FormLabel>
                         </MessageInput>
                         <SendLabel htmlFor="send">Send email</SendLabel><SendButton disabled id='send' aria-label='Send Email'><SendIcon /></SendButton>

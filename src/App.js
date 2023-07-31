@@ -7,6 +7,8 @@ import GlobalStyles from "./components/GlobalStyles";
 import Foot from "./components/Foot";
 import { useEffect, useRef, useState } from "react";
 
+import { Analytics } from '@vercel/analytics/react';
+
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -57,6 +59,7 @@ function App() {
       <Projects reference={divsRef[2]} isvisible={visibleIndex.includes(2)}/>
       <ContactMe reference={divsRef[3]} isvisible={visibleIndex.includes(3)}/>
       <Foot />
+      <Analytics />
     </>
   );
 }
