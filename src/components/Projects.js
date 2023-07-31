@@ -61,14 +61,14 @@ const Container = styled.div`
 
     @media only screen and (max-width: 800px) {
         padding-top: 170px;
-        margin: 10px 18px 0px 18px;
-        width: 90%;
+        margin: 10px 18px 0px 0px;
+        width: 100%;
     }
 `
 
 const ProjectsDiv = styled.div`
     background-color: transparent;
-    width: 95%;
+    width: 100%;
     padding: 50px 20px;
     border-radius: 55px;
     text-align: center;

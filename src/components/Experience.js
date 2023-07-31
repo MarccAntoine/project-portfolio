@@ -262,8 +262,10 @@ const SubjectDiv1 = styled.div`
         left: 7%;
     }
 
-    &:hover {
+    @media only screen and (min-width: 800px) {
+        &:hover {
         transform: scale(1.09);
+    }
     }
 `
 
@@ -289,8 +291,10 @@ const SubjectDiv2 = styled.div`
         left: 49%;
     }
 
-    &:hover {
+    @media only screen and (min-width: 800px) {
+        &:hover {
         transform: scale(1.09);
+    }
     }
 `
 
@@ -316,8 +320,10 @@ const SubjectDiv3 = styled.div`
         left: -6%
     }
 
-    &:hover {
+    @media only screen and (min-width: 800px) {
+        &:hover {
         transform: scale(1.09);
+    }
     }
 `
 
