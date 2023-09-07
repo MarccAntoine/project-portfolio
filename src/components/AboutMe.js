@@ -52,6 +52,10 @@ const Container = styled.div`
 const RoleName = styled.div`
     text-align: center;
     width: 100%;
+
+    h4 {
+        font-size: 1.6rem;
+    }
 `
 
 const ContentDiv = styled.div`
@@ -84,6 +88,10 @@ const NameDiv = styled.div`
     margin: 30px 0px;
     width: 100%;
     text-align: center;
+
+    h3 {
+        font-size: 2rem;
+    }
 `
 
 const IconsDiv = styled.div`
@@ -132,6 +140,10 @@ const LocationDiv = styled.div`
     display: flex;
     gap: 6px;
     margin-top: 30px;
+
+    h4 {
+        font-size: 1.6rem;
+    }
 `
 
 const LocationIcon = styled(FaMapPin)`

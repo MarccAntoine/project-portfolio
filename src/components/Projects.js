@@ -85,20 +85,17 @@ const ProjectsDiv = styled.div`
 `
 
 const ProjectsTitle = styled.h2`
-    font-size: 45px;
+    font-size: 3rem;
     color: var(--contrast-color);
-
-    @media only screen and (max-width: 600px) {
-        font-size: 30px;
-    }
 `
 
 const ProjectName = styled.h3`
     margin: 40px 0px 20px 0px;
     color: var(--secondary-contrast);
+    font-size: 2rem;
 
     @media only screen and (max-width: 600px) {
-        font-size: 20px;
+        font-size: 1.6rem;
         margin: 20px 0px 10px 0px;
     }
 
@@ -109,9 +106,9 @@ const ProjectDesc = styled.p`
     margin: 0 auto;
     padding-bottom: 10px;
     color: var(--secondary-contrast);
+    font-size: 1rem;
 
     @media only screen and (max-width: 600px) {
-        font-size: 12px;
         padding-bottom: 10px;
     }
 `
@@ -131,7 +128,7 @@ const ProjectImagesDiv = styled.div`
 const ProjectImageBack = styled.div`
     padding: 1%;
     border-radius: 20px;
-    background-color: var(--second-blue);
+    background-color: transparent;
 
     height: 95%;
     aspect-ratio: 1.3;
@@ -247,6 +244,7 @@ const ProjectDiv = styled.div`
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
+    min-width: 90%;
 
     @media only screen and (min-width: 1000px) {
         height: 750px;

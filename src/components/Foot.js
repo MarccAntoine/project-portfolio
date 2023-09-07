@@ -23,7 +23,7 @@ const Container = styled.div`
 
 const Credit = styled.div`
     font-family: var(--main-font);
-    font-size: 12px;
+    font-size: 0.8rem;
     filter: brightness(75%);
     text-align: center;
 

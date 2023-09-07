@@ -11,7 +11,7 @@ const Experience = (  {reference, isvisible} ) =>
         <Content>
             <Introduction><p>In 2019, I relocated to Montreal to pursue my studies in fashion marketing at LaSalle College. Upon completing my DEC, I embarked on a new journey in computer science by self-learning with Harvard's CS50 introduction to computer science and I enrolled in Concordia's web development bootcamp. Since then, I have acquired a range of new skills and developed a passion for the tech industry. I am eager to kickstart my career and continue my pursuit of learning in this field.</p></Introduction>
             <div>
-                <h3>Programming languages and libraries</h3>
+                <LanguageTitle>Programming languages and libraries</LanguageTitle>
                 <LanguagesDiv>
                     <IconsDiv>
                         <div><IconHtml /></div>
@@ -96,8 +96,11 @@ const Content = styled.div`
 
 const Introduction = styled.div`
     font-family: var(--main-font);
-    font-size: 22px;
     margin-bottom: 80px;
+
+    p {
+        font-size: 1.5rem;
+    }
 `
 
 const LanguagesDiv = styled.div`
@@ -108,8 +111,15 @@ const LanguagesDiv = styled.div`
     justify-content: center;
 `
 
+const LanguageTitle = styled.h3`
+    font-size: 2rem;
+`
+
 const IconsDiv = styled.div`
-    margin: 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     transition: all ease-in-out 0.5s;
     height: 140px;
     width: 100px;
@@ -128,15 +138,11 @@ const IconsName = styled.div`
     display: none;
     height: 25px;
     font-family: var(--main-font);
-    font-size: 18px;
+    font-size: 1.1rem;
     color: var(--secondary-contrast);
 
     ${IconsDiv}:hover & {
         display: inline;
-    }
-
-    @media only screen and (max-width: 800px) {
-        font-size: 12px;
     }
 `
 
@@ -151,7 +157,7 @@ const IconHtml = styled(FaHtml5)`
 
     @media only screen and (max-width: 800px) {
         width: auto;
-        height: 50px;
+        height: 40px;
     }
 `
 
@@ -167,7 +173,7 @@ ${IconsDiv}:hover & {
 
 @media only screen and (max-width: 800px) {
     width: auto;
-    height: 50px;
+    height: 40px;
 }
 `
 
@@ -182,7 +188,7 @@ const IconCss = styled(FaCss3Alt)`
 
     @media only screen and (max-width: 800px) {
         width: auto;
-        height: 50px;
+        height: 40px;
     }
 `
 
@@ -197,7 +203,7 @@ const IconJava = styled(DiJavascript)`
 
     @media only screen and (max-width: 800px) {
         width: auto;
-        height: 50px;
+        height: 40px;
     }
 `
 
@@ -212,7 +218,7 @@ const IconReact = styled(FaReact)`
 
     @media only screen and (max-width: 800px) {
         width: auto;
-        height: 50px;
+        height: 40px;
     }
 `
 
@@ -227,7 +233,7 @@ const IconPy = styled(FaPython)`
 
     @media only screen and (max-width: 800px) {
         width: auto;
-        height: 50px;
+        height: 40px;
     }
 `
 
@@ -239,6 +245,10 @@ const SubjectsContainer = styled.div`
     @media only screen and (max-width: 800px) {
         width: 95%;
         margin: 0 auto;
+    }
+
+    @media only screen and (max-width: 500px) {
+        aspect-ratio: 0.7;
     }
 `
 
@@ -258,8 +268,8 @@ const SubjectDiv1 = styled.div`
     transition: all ease 0.3s;
 
     @media only screen and (max-width: 500px) {
-        width: 56%;
-        left: 7%;
+        width: 65%;
+        left: 2%;
     }
 
     @media only screen and (min-width: 800px) {
@@ -286,9 +296,9 @@ const SubjectDiv2 = styled.div`
 
 
     @media only screen and (max-width: 500px) {
-        width: 56%;
-        top: 40%;
-        left: 49%;
+        width: 65%;
+        top: 37%;
+        left: 42%;
     }
 
     @media only screen and (min-width: 800px) {
@@ -315,9 +325,9 @@ const SubjectDiv3 = styled.div`
 
 
     @media only screen and (max-width: 500px) {
-        width: 56%;
-        top: 55%;
-        left: -6%
+        width: 65%;
+        top: 74%;
+        left: 2%
     }
 
     @media only screen and (min-width: 800px) {
@@ -331,34 +341,18 @@ const SubjectTitle = styled.h4`
     color: white;
     margin: 0px 0px 7% 0px;
     width: 60%;
-    font-size: 19px;
+    font-size: 1.2rem;
 
-    @media only screen and (min-width: 1050px) {
-        font-size: 23px;
+    @media only screen and (min-width: 750px) {
+        font-size: 1.5rem;
     }
 
     @media only screen and (min-width: 1200px) {
-        font-size: 26px;
+        font-size: 1.6rem;
     }
 
     @media only screen and (min-width: 1650px) {
-        font-size: 29px;
-    }
-
-    @media only screen and (min-width: 1800px) {
-        font-size: 31px;
-    }
-
-    @media only screen and (max-width: 650px) {
-        font-size: 15px;
-    }
-
-    @media only screen and (max-width: 460px) {
-        font-size: 14px;
-    }
-
-    @media only screen and (max-width: 400px) {
-        font-size: 13px;
+        font-size: 1.8rem;
     }
 `
 
@@ -367,37 +361,22 @@ const SubjectPara = styled.p`
     font-size: 14px;
     max-width: 75%;
     max-height: 60%;
+    font-size: 1rem;
 
     @media only screen and (min-width: 800px) {
-        font-size: 11px;
+        font-size: 0.8rem;
     }
 
     @media only screen and (min-width: 1075px) {
-        font-size: 16px;
-    }
-
-    @media only screen and (min-width: 1200px) {
-        font-size: 18px;
+        font-size: 1.1rem;
     }
 
     @media only screen and (min-width: 1650px) {
-        font-size: 21px;
+        font-size: 1.5rem;
     }
 
-    @media only screen and (min-width: 1800px) {
-        font-size: 25px;
-    }
-
-    @media only screen and (max-width: 650px) {
-        font-size: 12px;
-    }
-
-    @media only screen and (max-width: 460px) {
-        font-size: 9px;
-    }
-
-    @media only screen and (max-width: 400px) {
-        font-size: 8px;
+    @media only screen and (max-width: 600px) {
+        font-size: 0.8rem;
     }
 `
 

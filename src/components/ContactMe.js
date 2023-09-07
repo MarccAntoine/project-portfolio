@@ -1,23 +1,57 @@
 import {MdEmail} from 'react-icons/md'
 import {BiMailSend} from'react-icons/bi'
 
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+
 import styled from 'styled-components'
 
 const ContactMe = ( {reference, isvisible} ) =>
 {
+    const [showNotif, setShowNotif] = useState({state: false, notif: ""});
+    const form = useRef();
+
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+    const showNotifFunc = (notif) =>
+    {
+
+        setShowNotif({state : true, notif})
+
+        setTimeout(() => {
+            setShowNotif({state : false, notif : ""})
+        }, 2000)
+    }
 
     const copyEmail = () =>
     {
-        const notif = document.querySelector("#notif");
         navigator.clipboard.writeText("marc-a.t@hotmail.com");
 
-        notif.style.visibility= "visible";
-        notif.style.opacity= "100%";
+        showNotifFunc("Email copied to clipboard!")
+    }
 
-        setTimeout(() => {
-            notif.style.visibility= "hidden";
-            notif.style.opacity= "0%";
-        }, 2000)
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+
+        const nameInput = document.getElementById('user_name');
+        const emailInput = document.getElementById('user_email');
+        const messageInput = document.getElementById('message');
+
+
+    if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
+            showNotifFunc("Please complete each element of the email form.")
+    }
+    
+        emailjs.sendForm(serviceId, templateId, form.current, publicKey)
+        .then((result) => {
+            form.current.reset();
+            showNotifFunc("Email sent!")
+        }, (error) => {
+            console.log(error.text);
+        });
     }
 
     return (
@@ -27,28 +61,29 @@ const ContactMe = ( {reference, isvisible} ) =>
                 <SectionTitle><Title>Contact Me</Title><CopyButton onClick={copyEmail}><MailIcon /></CopyButton></SectionTitle>
                 <div><Intructions>Fill the form to send me directly an email or click the email icon to copy my email in your clipboard.</Intructions></div>
                 <div>
-                    <FormDiv>
+                    <FormDiv ref={form}>
                         <NameDiv>
                             <FormLabel>Your name
-                                <StyledInput type='text' id="fname"/>
+                                <StyledInput type='text' name="user_name" id='user_name'/>
                             </FormLabel>
                         </NameDiv>
                         <NameDiv>
                             <FormLabel>Your email
-                                <StyledInput type='email' id="email"/>
+                                <StyledInput type='email' name="user_email" id='user_email'/>
                             </FormLabel>
                         </NameDiv>
                         <MessageInput>
                             <FormLabel>Message
-                                <StyledTextArea type="text" id="message" placeholder='This functionality requires server-side implementation that I will learn in the next week, the send button will be disabled until I am able to use Node.js and NodeMailer' rows="10"/>
+                                <StyledTextArea type="text" name="message" id='message' rows="10"/>
                             </FormLabel>
                         </MessageInput>
-                        <SendLabel htmlFor="send">Send email</SendLabel><SendButton disabled id='send' aria-label='Send Email'><SendIcon /></SendButton>
+                        <SendLabel htmlFor="send">Send email</SendLabel><SendButton onClick={sendEmail} id='send' aria-label='Send Email'><SendIcon /></SendButton>
                     </FormDiv>
                 </div>
             </SectionDiv>
         </Container>
-        <Notif id="notif">Email copied to clipboard!</Notif>
+        {showNotif.state ? <Notif style={{visibility: "visible", opacity : "100%"}}>{showNotif.notif}</Notif> : <Notif style={{visibility: "hidden", opacity : "0"}}></Notif>}
+        
     </>)
 }
 
@@ -103,20 +138,18 @@ const SectionTitle = styled.div`
     gap: 20px;
     align-items: center;
     margin: 0px 0px 30px 0px;
+
+    @media only screen and (max-width: 800px) {
+        gap: 10px;
+    }
 `
 
 const Title = styled.h2`
-    font-size: 40px;
-
-    @media only screen and (max-width: 800px) {
-        font-size: 30px;
-    }
+    font-size: 2.5rem;
 `
 
 const Intructions = styled.p`
-        @media only screen and (max-width: 800px) {
-        font-size: 15px;
-    }
+    font-size: 1.3em;
 `
 
 const CopyButton = styled.button`
@@ -132,6 +165,10 @@ const MailIcon = styled(MdEmail)`
     &:hover {
         color: var(--second-green);
         cursor: pointer;
+    }
+
+    @media only screen and (max-width: 800px) {
+        height: 30px;
     }
 `
 
@@ -152,7 +189,7 @@ const StyledInput = styled.input`
     border: none;
     width: 100%;
     font-family: var(--main-font);
-    font-size: 15px;
+    font-size: 0.9rem;
     color: var(--secondary-contrast);
 
     &:focus {
@@ -161,7 +198,6 @@ const StyledInput = styled.input`
     }
 
     @media only screen and (max-width: 800px) {
-        font-size: 12px;
         top: 15px;
         width: 96%;
         left: -3px;
@@ -195,10 +231,8 @@ const FormLabel = styled.label`
     font-family: var(--second-font);
     font-weight: 900;
     color: var(--contrast-color);
+    font-size: 1.1rem;
 
-    @media only screen and (max-width: 800px) {
-        font-size: 15px;
-    }
 `
 
 const MessageInput = styled.div`
@@ -222,7 +256,7 @@ const StyledTextArea = styled.textarea`
     border: none;
     width: 100%;
     font-family: var(--main-font);
-    font-size: 15px;
+    font-size: 0.9rem;
     resize: none;
     color: var(--secondary-contrast);
     box-sizing: border-box;
@@ -233,7 +267,6 @@ const StyledTextArea = styled.textarea`
     }
 
     @media only screen and (max-width: 800px) {
-        font-size: 12px;
         top: 15px;
         width: 96%;
         left: -3px;
@@ -262,6 +295,8 @@ const SendIcon = styled(BiMailSend)`
         color: var(--main-blue);
         cursor: pointer;
     }
+
+    
 `
 
 const Notif = styled.div`
@@ -269,11 +304,15 @@ const Notif = styled.div`
     width: 250px;
     height: 70px;
     border-radius: 55px;
-    padding: 16px;
+    padding: 10px;
     text-align: center;
 
     font-family: var(--main-font);
-    font-size: 20px;
+    font-size: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background-color: var(--second-blue);
     color: white;
@@ -291,7 +330,6 @@ const Notif = styled.div`
     @media only screen and (max-width: 800px) {
         width: 125px;
         height: 50px;
-        font-size: 12px;
         padding: 12px;
     }
 `

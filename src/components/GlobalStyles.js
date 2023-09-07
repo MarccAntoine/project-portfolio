@@ -41,6 +41,19 @@ export default createGlobalStyle`
     footer, header, hgroup, menu, nav, section {
         display: block;
     }
+    html {
+        font-size: 16px;
+
+        @media only screen and (max-width: 1000px) {
+        font-size: 15px;
+    }
+        @media only screen and (max-width: 850px) {
+        font-size: 13px;
+    }
+        @media only screen and (max-width: 500px) {
+        font-size: 11px;
+    }
+    }
     body {
         line-height: 1;
     }
