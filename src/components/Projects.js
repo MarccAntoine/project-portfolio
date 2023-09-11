@@ -4,6 +4,7 @@ import { projects } from "../content/projectsData";
 import { useState } from "react";
 
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
+import {FaGithub, FaYoutube} from "react-icons/fa"
 
 
 const Projects = ( {reference, isvisible} ) =>
@@ -28,9 +29,20 @@ const Projects = ( {reference, isvisible} ) =>
             <div><ProjectsTitle>Projects</ProjectsTitle></div>
             <ProjectDiv key={projects[projectsIndex].id}>
                 <ProjectName>{projects[projectsIndex].name}</ProjectName>
+                <LinksDiv>
+                    {projects[projectsIndex].git ? (
+                            <a rel="noreferrer" target="_blank" href={projects[projectsIndex].git}><GithubIcon /></a>
+                        ) : (<></>)}
+                    {projects[projectsIndex].youtube ? (
+                        <a rel="noreferrer" target="_blank" href={projects[projectsIndex].youtube}><YoutubeIcon /></a>
+                    ) : (<></>)}
+                </LinksDiv>
                 <ProjectDesc>{projects[projectsIndex].description}</ProjectDesc>
                 <ProjectImagesDiv>
-                    <ProjectImageBack><ProjectImageMax><ImageProject src={projects[projectsIndex].srcImg1} alt={projects[projectsIndex].name}/></ProjectImageMax></ProjectImageBack>
+                    <ProjectImageBack>
+                        <ProjectImageMax><ImageProject src={projects[projectsIndex].srcImg1} alt={projects[projectsIndex].name}/></ProjectImageMax>
+                        <ProjectImageSec><ImageProjectSec src={projects[projectsIndex].srcImg2} alt={projects[projectsIndex].name}/></ProjectImageSec>
+                    </ProjectImageBack>
                 </ProjectImagesDiv>
                 <ArrowButtonNext onClick={nextProject}><NextArrow /></ArrowButtonNext>
                 <ArrowButtonPrece onClick={precedentProject}><PreceArrow /></ArrowButtonPrece>
@@ -131,25 +143,54 @@ const ProjectImageBack = styled.div`
     background-color: transparent;
 
     height: 95%;
-    aspect-ratio: 1.3;
+    aspect-ratio: 1.6;
 
     z-index: 5;
 `
 
 const ProjectImageMax = styled.div`
     overflow: hidden;
-
     border-radius: 15px;
-
     height: 100%;
-    width: 100%;
+    width: 65%;
+
+    position: absolute;
+    left: 5%;
+    top: 30%;
+`
+
+const ProjectImageSec = styled.div`
+    overflow: hidden;
+    border-radius: 15px;
+    height: 85%;
+    width: 50%;
+    position: absolute;
+    left: 55%;
+    top: 10%;
 `
 
 const ImageProject = styled.img`
     object-fit: cover;
     object-position: top;
     width: 100%;
+    height: auto;
+    transition: all 1s ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+`
+
+const ImageProjectSec = styled.img`
+    object-fit: cover;
+    object-position: top;
+    width: auto;
     height: 100%;
+    transition: all 1s ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 `
 
 const ArrowButtonNext = styled.button`
@@ -272,6 +313,34 @@ const ProjectDiv = styled.div`
 
     @media only screen and (max-width: 450px) {
         height: 400px;
+    }
+`
+
+const LinksDiv = styled.div`
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+`
+
+const GithubIcon = styled(FaGithub)`
+    height: 40px;
+    width: auto;
+    color: var(--secondary-contrast);
+
+    &:hover {
+        color: var(--second-green);
+    }
+`
+
+const YoutubeIcon = styled(FaYoutube)`
+    height: 40px;
+    width: auto;
+    color: var(--secondary-contrast);
+
+    &:hover {
+        color: var(--second-green);
     }
 `
 
