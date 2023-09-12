@@ -27,7 +27,7 @@ const ContactMe = ( {reference, isvisible} ) =>
 
     const copyEmail = () =>
     {
-        navigator.clipboard.writeText("marc-a.t@hotmail.com");
+        navigator.clipboard.writeText("marcantoine.t.dev@gmail.com");
 
         showNotifFunc("Email copied to clipboard!")
     }
@@ -44,7 +44,7 @@ const ContactMe = ( {reference, isvisible} ) =>
     if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
             showNotifFunc("Please complete each element of the email form.")
     }
-    
+
         emailjs.sendForm(serviceId, templateId, form.current, publicKey)
         .then((result) => {
             form.current.reset();

@@ -116,9 +116,11 @@ const ProjectName = styled.h3`
 const ProjectDesc = styled.p`
     width: 80%;
     margin: 0 auto;
+    padding-top: 10px;
     padding-bottom: 10px;
     color: var(--secondary-contrast);
     font-size: 1rem;
+    line-height: 125%;
 
     @media only screen and (max-width: 600px) {
         padding-bottom: 10px;
