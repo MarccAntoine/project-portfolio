@@ -17,7 +17,7 @@ const Container = styled.div`
     margin-left: 30%;
     padding: 40px;
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         margin: 30px 20px 0px 20px;
         width: 90%;
         padding: 20px;

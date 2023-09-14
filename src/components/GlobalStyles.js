@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const breakpoints = { tablet: "825px" };
+export const breakpoints = { tablet: "900px" };
 
 export default createGlobalStyle`
     :root {
@@ -52,6 +52,9 @@ export default createGlobalStyle`
     }
         @media only screen and (max-width: 500px) {
         font-size: 11px;
+    }
+    @media only screen and (max-width: 300px) {
+        font-size: 9px;
     }
     }
     body {

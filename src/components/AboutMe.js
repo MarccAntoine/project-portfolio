@@ -29,7 +29,7 @@ const Container = styled.div`
     position: relative;
     transition: all ease-out 0.25s;
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         margin: 0px 15px 0px 15px;
         width: 90%;
         padding-top: 360px;
@@ -72,7 +72,7 @@ const ImgContainer = styled.div`
     border-radius: 15px;
     box-shadow: 0px 0px 5px -1px #f2f2f2;
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         width: 220px;
         height: 220px;
     }
@@ -100,7 +100,7 @@ const IconsDiv = styled.div`
     height: fit-content;
     width: fit-content;
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         margin: 20px;
     }
 `
@@ -115,7 +115,7 @@ const GithubIcon = styled(FaGithubSquare)`
         color: var(--second-green);
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         width: auto;
         height: 30px;
     }
@@ -131,7 +131,7 @@ const LinkedinIcon = styled(FaLinkedin)`
         color: var(--second-green);
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         width: auto;
         height: 30px;
     }

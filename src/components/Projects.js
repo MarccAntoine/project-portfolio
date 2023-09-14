@@ -73,7 +73,7 @@ const Container = styled.div`
         margin-top: 250px;
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         padding-top: 170px;
         margin: 10px 18px 0px 0px;
         width: 100%;
@@ -92,14 +92,14 @@ const ProjectsDiv = styled.div`
     flex-direction: column;
     position: relative;
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         padding: 30px 20px;
         margin: 0 auto;
     }
 `
 
 const ProjectsTitle = styled.h2`
-    font-size: 3rem;
+    font-size: 2.8rem;
     color: var(--contrast-color);
 `
 
@@ -109,7 +109,7 @@ const ProjectName = styled.h3`
     font-size: 2rem;
 
     @media only screen and (max-width: 600px) {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         margin: 20px 0px 10px 0px;
     }
 
@@ -215,10 +215,12 @@ const ArrowButtonNext = styled.button`
     }
 
     @media only screen and (max-width: 600px) {
+        top: 6%;
         right: calc(20px - 5vw);
     }
 
     @media only screen and (max-width: 500px) {
+        top: 6%;
         right: calc(12px - 5vw);
     }
 
@@ -245,10 +247,12 @@ const ArrowButtonPrece = styled.button`
     }
 
     @media only screen and (max-width: 600px) {
+        top: 6%;
         left: calc(20px - 5vw);
     }
 
     @media only screen and (max-width: 500px) {
+        top: 6%;
         left: calc(12px - 5vw);
     }
 
@@ -312,11 +316,11 @@ const ProjectDiv = styled.div`
     }
 
     @media only screen and (max-width: 600px) {
-        height: 460px;
+        height: 550px;
     }
 
     @media only screen and (max-width: 450px) {
-        height: 400px;
+        height: 500px;
     }
 `
 

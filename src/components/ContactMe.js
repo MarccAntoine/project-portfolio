@@ -31,7 +31,7 @@ const ContactMe = ( {reference, isvisible} ) =>
     {
         navigator.clipboard.writeText("marcantoine.t.dev@gmail.com");
 
-        showNotifFunc(t('notifcopy'))
+        showNotifFunc(t('notifCopy'))
     }
 
     const sendEmail = (e) => {
@@ -107,13 +107,13 @@ const Container = styled.div`
         margin-top: 350px;
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         margin: 180px 35px 0px 35px;
         width: 90%;
         margin-bottom: 0px;
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         padding-top: 170px;
         margin: 10px 18px 0px 18px;
         width: 90%;
@@ -130,7 +130,7 @@ const SectionDiv = styled.div`
     align-items: left;
     width: 95%;
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         padding: 30px;
         margin: 0 auto;
     }
@@ -142,7 +142,7 @@ const SectionTitle = styled.div`
     align-items: center;
     margin: 0px 0px 30px 0px;
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         gap: 10px;
     }
 `
@@ -170,7 +170,7 @@ const MailIcon = styled(MdEmail)`
         cursor: pointer;
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         height: 30px;
     }
 `
@@ -200,7 +200,7 @@ const StyledInput = styled.input`
         outline: none;
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         top: 15px;
         width: 96%;
         left: -3px;
@@ -221,7 +221,7 @@ const NameDiv = styled.div`
         border: 2px solid var(--main-blue);
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         height: 42px;
     }
 `
@@ -269,7 +269,7 @@ const StyledTextArea = styled.textarea`
         outline: none;
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         top: 15px;
         width: 96%;
         left: -3px;
@@ -298,8 +298,6 @@ const SendIcon = styled(BiMailSend)`
         color: var(--main-blue);
         cursor: pointer;
     }
-
-    
 `
 
 const Notif = styled.div`
@@ -330,10 +328,11 @@ const Notif = styled.div`
 
     transition: all ease 0.3s;
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         width: 125px;
         height: 50px;
         padding: 12px;
+        font-size: 0.8rem;
     }
 `
 

@@ -68,7 +68,7 @@ const Container = styled.div`
         margin-top: 350px;
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         padding-top: 200px;
         margin: 10px 35px 0px 35px;
         width: 90%;
@@ -90,7 +90,7 @@ const Content = styled.div`
     flex-direction: column;
     align-items: center;
     
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         padding: 0px;
         margin: 0 auto;
     }
@@ -131,7 +131,7 @@ const IconsDiv = styled.div`
         transform: scale(1.1);
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         width: 60px;
         height: 80px;
     }
@@ -158,7 +158,7 @@ const IconHtml = styled(FaHtml5)`
         color: var(--second-green);
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         width: auto;
         height: 40px;
     }
@@ -174,7 +174,7 @@ ${IconsDiv}:hover & {
     color: var(--second-green);
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 900px) {
     width: auto;
     height: 40px;
 }
@@ -189,7 +189,7 @@ const IconCss = styled(FaCss3Alt)`
         color: var(--second-green);
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         width: auto;
         height: 40px;
     }
@@ -204,7 +204,7 @@ const IconJava = styled(DiJavascript)`
         color: var(--second-green);
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         width: auto;
         height: 40px;
     }
@@ -219,7 +219,7 @@ const IconReact = styled(FaReact)`
         color: var(--second-green);
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         width: auto;
         height: 40px;
     }
@@ -234,7 +234,7 @@ const IconPy = styled(FaPython)`
         color: var(--second-green);
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         width: auto;
         height: 40px;
     }
@@ -245,7 +245,7 @@ const SubjectsContainer = styled.div`
     width: 100%;
     aspect-ratio: 0.95;
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         width: 95%;
         margin: 0 auto;
     }
@@ -275,7 +275,7 @@ const SubjectDiv1 = styled.div`
         left: 2%;
     }
 
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 900px) {
         &:hover {
         transform: scale(1.09);
     }
@@ -304,7 +304,7 @@ const SubjectDiv2 = styled.div`
         left: 42%;
     }
 
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 900px) {
         &:hover {
         transform: scale(1.09);
     }
@@ -333,7 +333,7 @@ const SubjectDiv3 = styled.div`
         left: 2%
     }
 
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 900px) {
         &:hover {
         transform: scale(1.09);
     }
@@ -366,7 +366,7 @@ const SubjectPara = styled.p`
     max-height: 60%;
     font-size: 1rem;
 
-    @media only screen and (min-width: 850px) {
+    @media only screen and (min-width: 900px) {
         font-size: 0.8rem;
     }
 
@@ -378,7 +378,7 @@ const SubjectPara = styled.p`
         font-size: 1.5rem;
     }
 
-    @media only screen and (max-width: 850px) {
+    @media only screen and (max-width: 900px) {
         font-size: 0.8rem;
     }
 
@@ -387,7 +387,15 @@ const SubjectPara = styled.p`
     }
 
     @media only screen and (max-width: 600px) {
+        font-size: 0.7rem;
+    }
+
+    @media only screen and (max-width: 500px) {
         font-size: 0.8rem;
+    }
+
+    @media only screen and (max-width: 300px) {
+        font-size: 0.7rem;
     }
 `
 
