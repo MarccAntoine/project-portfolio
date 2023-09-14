@@ -5,11 +5,13 @@ import { useState } from "react";
 
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
 import {FaGithub, FaYoutube} from "react-icons/fa"
+import { useTranslation } from "react-i18next";
 
 
 const Projects = ( {reference, isvisible} ) =>
 {
     const [projectsIndex, setProjectsIndex] = useState(0);
+    const {t} = useTranslation();
 
     const nextProject = () =>
     {
@@ -26,9 +28,9 @@ const Projects = ( {reference, isvisible} ) =>
     return (
     <Container ref={reference} isvisible={isvisible.toString()} id="projects">
         <ProjectsDiv>
-            <div><ProjectsTitle>Projects</ProjectsTitle></div>
+            <div><ProjectsTitle>{t("projectTitle")}</ProjectsTitle></div>
             <ProjectDiv key={projects[projectsIndex].id}>
-                <ProjectName>{projects[projectsIndex].name}</ProjectName>
+                <ProjectName>{t(`project${projectsIndex}Title`)}</ProjectName>
                 <LinksDiv>
                     {projects[projectsIndex].git ? (
                             <a rel="noreferrer" target="_blank" href={projects[projectsIndex].git}><GithubIcon /></a>
@@ -37,7 +39,7 @@ const Projects = ( {reference, isvisible} ) =>
                         <a rel="noreferrer" target="_blank" href={projects[projectsIndex].youtube}><YoutubeIcon /></a>
                     ) : (<></>)}
                 </LinksDiv>
-                <ProjectDesc>{projects[projectsIndex].description}</ProjectDesc>
+                <ProjectDesc>{t(`project${projectsIndex}Desc`)}</ProjectDesc>
                 <ProjectImagesDiv>
                     <ProjectImageBack>
                         <ProjectImageMax><ImageProject src={projects[projectsIndex].srcImg1} alt={projects[projectsIndex].name}/></ProjectImageMax>

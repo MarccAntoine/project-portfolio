@@ -5,11 +5,13 @@ import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next';
 
 const ContactMe = ( {reference, isvisible} ) =>
 {
     const [showNotif, setShowNotif] = useState({state: false, notif: ""});
     const form = useRef();
+    const {t} = useTranslation()
 
     const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
     const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
@@ -29,7 +31,7 @@ const ContactMe = ( {reference, isvisible} ) =>
     {
         navigator.clipboard.writeText("marcantoine.t.dev@gmail.com");
 
-        showNotifFunc("Email copied to clipboard!")
+        showNotifFunc(t('notifcopy'))
     }
 
     const sendEmail = (e) => {
@@ -42,13 +44,14 @@ const ContactMe = ( {reference, isvisible} ) =>
 
 
     if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
-            showNotifFunc("Please complete each element of the email form.")
+            showNotifFunc(t('notifMis')); 
+            return;
     }
 
         emailjs.sendForm(serviceId, templateId, form.current, publicKey)
         .then((result) => {
             form.current.reset();
-            showNotifFunc("Email sent!")
+            showNotifFunc(t('notifsent'))
         }, (error) => {
             console.log(error.text);
         });
@@ -58,22 +61,22 @@ const ContactMe = ( {reference, isvisible} ) =>
     <>
         <Container ref={reference} isvisible={isvisible.toString()} id='contact'>
             <SectionDiv>
-                <SectionTitle><Title>Contact Me</Title><CopyButton onClick={copyEmail}><MailIcon /></CopyButton></SectionTitle>
-                <div><Intructions>Fill the form to send me directly an email or click the email icon to copy my email in your clipboard.</Intructions></div>
+                <SectionTitle><Title>{t('contactTitle')}</Title><CopyButton onClick={copyEmail}><MailIcon /></CopyButton></SectionTitle>
+                <div><Intructions>{t('contactDesc')}</Intructions></div>
                 <div>
                     <FormDiv ref={form}>
                         <NameDiv>
-                            <FormLabel>Your name
+                            <FormLabel>{t('contactName')}
                                 <StyledInput type='text' name="user_name" id='user_name'/>
                             </FormLabel>
                         </NameDiv>
                         <NameDiv>
-                            <FormLabel>Your email
+                            <FormLabel>{t('contactMail')}
                                 <StyledInput type='email' name="user_email" id='user_email'/>
                             </FormLabel>
                         </NameDiv>
                         <MessageInput>
-                            <FormLabel>Message
+                            <FormLabel>{t('contactMes')}
                                 <StyledTextArea type="text" name="message" id='message' rows="10"/>
                             </FormLabel>
                         </MessageInput>

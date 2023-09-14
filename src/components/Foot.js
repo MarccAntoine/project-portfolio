@@ -1,11 +1,14 @@
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 
 const Foot = () =>
 {
+    const {t} = useTranslation();
+    
     return (
     <>
-        <Container><Credit>Website Developped by Marc-Antoine Tremblay - 2023</Credit></Container>
+        <Container><Credit>{t('foot')}</Credit></Container>
     </>
     )
 }

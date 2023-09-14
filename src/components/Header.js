@@ -4,9 +4,14 @@ import {MdDarkMode, MdLightMode} from 'react-icons/md'
 import {SlMenu} from 'react-icons/sl'
 import { useEffect, useState } from "react";
 
+import i18next from 'i18next';
+import { useTranslation } from "react-i18next";
+
 const Header = ( {darkMode, setDarkMode, openedMenu, setOpenedMenu} ) =>
 {
     const [isMobile, setIsMobile] = useState(false);
+    const [selectedLanguage, setSelectedLanguage] = useState('En')
+    const {t} = useTranslation()
 
     const showMenu = () =>
     {
@@ -29,7 +34,13 @@ const Header = ( {darkMode, setDarkMode, openedMenu, setOpenedMenu} ) =>
         return () => {
             windowSize.removeListener(handleMediaQueryChange);
         };
-    }, []) // eslint-disable-line
+        // eslint-disable-next-line
+    }, []) 
+
+    useEffect(() =>
+    {
+        i18next.changeLanguage(selectedLanguage)
+    }, [selectedLanguage])
 
     const toggleDarkMode = () =>
     {
@@ -51,10 +62,10 @@ const Header = ( {darkMode, setDarkMode, openedMenu, setOpenedMenu} ) =>
             <Navbar>
                 <SectionsTitles>
                     {isMobile? (<></>) : (<Line></Line>)}
-                    <SectionDiv onClick={() => {scrollSelect("myself")}}><Ball></Ball><Sections>About Me</Sections></SectionDiv>
-                    <SectionDiv onClick={() => {scrollSelect("skills")}}><Ball></Ball><Sections>Expertise</Sections></SectionDiv>
-                    <SectionDiv onClick={() => {scrollSelect("projects")}}><Ball></Ball><Sections>Projects</Sections></SectionDiv>
-                    <SectionDiv onClick={() => {scrollSelect("contact")}}><Ball></Ball><Sections>Contact Me</Sections></SectionDiv>
+                    <SectionDiv onClick={() => {scrollSelect("myself")}}><Ball></Ball><Sections>{t('aboutMenu')}</Sections></SectionDiv>
+                    <SectionDiv onClick={() => {scrollSelect("skills")}}><Ball></Ball><Sections>{t('expMenu')}</Sections></SectionDiv>
+                    <SectionDiv onClick={() => {scrollSelect("projects")}}><Ball></Ball><Sections>{t('projectMenu')}</Sections></SectionDiv>
+                    <SectionDiv onClick={() => {scrollSelect("contact")}}><Ball></Ball><Sections>{t('contactMenu')}</Sections></SectionDiv>
                 </SectionsTitles>
             </Navbar>
             {isMobile ? (
@@ -70,6 +81,7 @@ const Header = ( {darkMode, setDarkMode, openedMenu, setOpenedMenu} ) =>
                 </>
             ) : (<></>)}
         </StyledHeader>
+        {isMobile ? (<></>) : (<LangSelect onClick={() => setSelectedLanguage(selectedLanguage === 'En' ? ("Fr") : ("En"))}>{selectedLanguage === 'En' ? ("Fr") : ("En")}</LangSelect>)}
         {isMobile ? (<></>) : (<>{darkMode ? (<DarkDiv><DarkLabel>Light Mode</DarkLabel><ModeButton onClick={() => {toggleDarkMode()}}><Light /></ModeButton></DarkDiv>) : (<DarkDiv><DarkLabel>Dark Mode</DarkLabel><ModeButton onClick={() => {toggleDarkMode()}}><Dark /></ModeButton></DarkDiv>)}</>)}
     </>)
 }
@@ -282,7 +294,7 @@ const DarkDiv = styled.div`
 `
 
 const DarkLabel = styled.label`
-    z-index: -1;
+    z-index: 5;
     position: absolute;
     left: -120px;
     display: none;
@@ -302,6 +314,24 @@ const DarkLabel = styled.label`
 
     @media only screen and (max-width: 800px) {
         visibility: hidden;
+    }
+`
+
+const LangSelect = styled.button`
+    position: fixed;
+    top: 15px;
+    right: 60px;
+    z-index: 4;
+
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: var(--second-font);
+
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
     }
 `
 

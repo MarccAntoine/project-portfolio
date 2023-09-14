@@ -2,16 +2,18 @@ import { FaHtml5, FaCss3Alt, FaReact, FaPython, FaNodeJs } from 'react-icons/fa'
 import { DiJavascript } from 'react-icons/di'
 
 import styled from 'styled-components'
-import { expertise } from '../content/expertiseData'
+import { useTranslation } from 'react-i18next'
 
 const Experience = (  {reference, isvisible} ) =>
 {
+    const {t} = useTranslation();
+
     return (
     <Container ref={reference} isvisible={isvisible.toString()} id='skills'>
         <Content>
-            <Introduction><p>In 2019, I relocated to Montreal to pursue my studies in fashion marketing at LaSalle College. Upon completing my DEC, I embarked on a new journey in computer science by self-learning with Harvard's CS50 introduction to computer science and I enrolled in Concordia's web development bootcamp. Since then, I have acquired a range of new skills and developed a passion for the tech industry. I am eager to kickstart my career and continue my pursuit of learning in this field.</p></Introduction>
+            <Introduction><p>{t('expDesc')}</p></Introduction>
             <div>
-                <LanguageTitle>Programming languages and libraries</LanguageTitle>
+                <LanguageTitle>{t('titleLang')}</LanguageTitle>
                 <LanguagesDiv>
                     <IconsDiv>
                         <div><IconHtml /></div>
@@ -40,9 +42,9 @@ const Experience = (  {reference, isvisible} ) =>
                 </LanguagesDiv>
             </div>
             <SubjectsContainer>
-                <SubjectDiv1><SubjectTitle>{expertise[0].name}</SubjectTitle><SubjectPara>{expertise[0].description}</SubjectPara></SubjectDiv1>
-                <SubjectDiv2><SubjectTitle>{expertise[1].name}</SubjectTitle><SubjectPara>{expertise[1].description}</SubjectPara></SubjectDiv2>
-                <SubjectDiv3><SubjectTitle>{expertise[2].name}</SubjectTitle><SubjectPara>{expertise[2].description}</SubjectPara></SubjectDiv3>
+                <SubjectDiv1><SubjectTitle>{t('sub1')}</SubjectTitle><SubjectPara>{t('sub1par')}</SubjectPara></SubjectDiv1>
+                <SubjectDiv2><SubjectTitle>{t('sub2')}</SubjectTitle><SubjectPara>{t('sub2par')}</SubjectPara></SubjectDiv2>
+                <SubjectDiv3><SubjectTitle>{t('sub3')}</SubjectTitle><SubjectPara>{t('sub3par')}</SubjectPara></SubjectDiv3>
             </SubjectsContainer>
         </Content>
     </Container>)
@@ -100,6 +102,7 @@ const Introduction = styled.div`
 
     p {
         font-size: 1.5rem;
+        line-height: 110%;
     }
 `
 
@@ -363,16 +366,24 @@ const SubjectPara = styled.p`
     max-height: 60%;
     font-size: 1rem;
 
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 850px) {
         font-size: 0.8rem;
     }
 
-    @media only screen and (min-width: 1075px) {
-        font-size: 1.1rem;
+    @media only screen and (min-width: 1200px) {
+        font-size: 1rem;
     }
 
     @media only screen and (min-width: 1650px) {
         font-size: 1.5rem;
+    }
+
+    @media only screen and (max-width: 850px) {
+        font-size: 0.8rem;
+    }
+
+    @media only screen and (max-width: 750px) {
+        font-size: 0.78rem;
     }
 
     @media only screen and (max-width: 600px) {

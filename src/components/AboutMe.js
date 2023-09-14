@@ -1,18 +1,19 @@
 import portrait from "../content/portrait.jpg"
 import  styled  from "styled-components";
+import { useTranslation } from 'react-i18next';
 
 import {FaGithubSquare, FaLinkedin} from 'react-icons/fa'
 import { FaMapPin } from "react-icons/fa";
 
 const AboutMe = ( {reference, isvisible} ) =>
 {
-
+    const {t} = useTranslation()
     return (
     <Container ref={reference} id="myself" isvisible={isvisible.toString()}>
         <ContentDiv>
             <ImgContainer><Portrait src={portrait}/></ImgContainer>
             <NameDiv><h3>Marc-Antoine Tremblay</h3></NameDiv>
-            <RoleName><h4>Full-stack web developper</h4></RoleName>
+            <RoleName><h4>{t('role')}</h4></RoleName>
             <LocationDiv><LocationIcon /><h4>Montreal, Quebec</h4></LocationDiv>
             <IconsDiv><a rel="noreferrer" target="_blank" href="https://github.com/MarccAntoine"><GithubIcon /></a><a rel="noreferrer" target="_blank" href="https://www.linkedin.com/in/marc-antoine-tremblay/"><LinkedinIcon /></a></IconsDiv>
         </ContentDiv>
