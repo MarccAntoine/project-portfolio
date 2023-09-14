@@ -31,7 +31,7 @@ const DesktopNavBar = ( {darkMode, setDarkMode, openedMenu, setOpenedMenu, setSe
                     </Navbar>
             </StyledHeader>
             <LangSelect onClick={() => setSelectedLanguage(selectedLanguage === 'En' ? ("Fr") : ("En"))}>{selectedLanguage === 'En' ? ("Fr") : ("En")}</LangSelect>
-            {darkMode ? (<DarkDiv><DarkLabel>Light Mode</DarkLabel><ModeButton onClick={() => {setDarkMode(!darkMode)}}><Light /></ModeButton></DarkDiv>) : (<DarkDiv><DarkLabel>Dark Mode</DarkLabel><ModeButton onClick={() => {setDarkMode(!darkMode)}}><Dark /></ModeButton></DarkDiv>)}
+            {darkMode ? (<DarkDiv><DarkLabel>{t('light')}</DarkLabel><ModeButton onClick={() => {setDarkMode(!darkMode)}}><Light /></ModeButton></DarkDiv>) : (<DarkDiv><DarkLabel>{t('dark')}</DarkLabel><ModeButton onClick={() => {setDarkMode(!darkMode)}}><Dark /></ModeButton></DarkDiv>)}
         </>
     )
 }

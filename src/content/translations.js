@@ -5,7 +5,9 @@ export const header = {
         expMenu : "Expertise",
         projectMenu : "Projets",
         contactMenu : "Me contacter",
-        foot : "Site web développé par Marc-Antoine Tremblay - 2023"
+        foot : "Site web développé par Marc-Antoine Tremblay - 2023",
+        dark : "Mode nuit",
+        light : "Mode jour"
     },
     en : {
         role : "Full stack web developer",
@@ -13,7 +15,9 @@ export const header = {
         expMenu : "Expertise",
         projectMenu : "Projects",
         contactMenu : "Contact Me",
-        foot : "Website Developed by Marc-Antoine Tremblay - 2023"
+        foot : "Website Developed by Marc-Antoine Tremblay - 2023",
+        dark : "Dark mode",
+        light : "Light mode"
     }
 }
 
