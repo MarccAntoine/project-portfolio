@@ -28,7 +28,7 @@ const MobileNavBar = ( {darkMode, setDarkMode, openedMenu, setOpenedMenu, setSel
                     <SectionDiv onClick={() => {scrollSelect("myself")}}><Sections>{t('aboutMenu')}</Sections></SectionDiv>
                     <SectionDiv onClick={() => {scrollSelect("skills")}}><Sections>{t('expMenu')}</Sections></SectionDiv>
                     <SectionDiv onClick={() => {scrollSelect("projects")}}><Sections>{t('projectMenu')}</Sections></SectionDiv>
-                    <SectionDiv onClick={() => {scrollSelect("contact")}}><Sections>{t('aboutMenu')}</Sections></SectionDiv>
+                    <SectionDiv onClick={() => {scrollSelect("contact")}}><Sections>{t('contactMenu')}</Sections></SectionDiv>
                     <ButtonsDiv>
                         <LangMobileSelect onClick={() => setSelectedLanguage(selectedLanguage === 'En' ? ("Fr") : ("En"))}>{selectedLanguage === 'En' ? ("Fr") : ("En")}</LangMobileSelect>
                         {darkMode ? (<DarMobileDiv><DarkLabel>Light Mode</DarkLabel><ModeButton onClick={() => {setDarkMode(!darkMode)}}><Light /></ModeButton></DarMobileDiv>) : (<DarMobileDiv><DarkLabel>Dark Mode</DarkLabel><ModeButton onClick={() => {setDarkMode(!darkMode)}}><Dark /></ModeButton></DarMobileDiv>)}
